@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+          background-color: black;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+        }
+        .circle-button {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            border: 2px solid #000;
+            border-radius: 50%;
+            background-color: white;
+            border-color: green;
+            margin: 10px;
+            margin-left: 100px;
+
+            text-align: center;
+            line-height: 70px;
+
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .side-button {
+            display: inline-block;
+            width: 50px;
+            height: 20px;
+            margin-top: 5px;
+            margin-left: 100px;
+            background-color: white;
+            cursor: pointer;
+        }
+        .side-button-neg {
+            display: inline-block;
+            margin-left: 100px;
+            margin-top: 5px;
+            background-color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <div class="circle-button" onclick="incrementCounter(1)">0</div>
+        <div class="circle-button" onclick="incrementCounter(2)">0</div>
+        <div class="circle-button" onclick="incrementCounter(3)">0</div>
+    </div>
+
+    <div>
+        <div class="side-button" onclick="incrementCounterByAmount(1, 5000)">+5000</div>
+        <div class="side-button" onclick="incrementCounterByAmount(2, 5000)">+5000</div>
+        <div class="side-button" onclick="incrementCounterByAmount(3, 5000)">+5000</div>
+    <div>
+
+
+
+    <div>
+    <div>
+        <div class="side-button-neg" onclick="incrementCounterByAmount(1, -5000)">-5000</div>
+        <div class="side-button-neg" onclick="incrementCounterByAmount(2, -5000)">-5000</div>
+        <div class="side-button-neg" onclick="incrementCounterByAmount(3, -5000)">-5000</div>
+    </div>
+    <div>
+        <div class="circle-button" onclick="incrementCounter(4)">0</div>
+        <div class="circle-button" onclick="incrementCounter(5)">0</div>
+        <div class="circle-button" onclick="incrementCounter(6)">0</div>
+    </div>
+    <div>
+        <div class="side-button" onclick="incrementCounterByAmount(4, 5000)">+5000</div>
+        <div class="side-button" onclick="incrementCounterByAmount(5, 5000)">+5000</div>
+        <div class="side-button" onclick="incrementCounterByAmount(6, 5000)">+5000</div>
+    </div>
+    <div>
+        <div class="side-button-neg" onclick="incrementCounterByAmount(4, -5000)">-5000</div>
+        <div class="side-button-neg" onclick="incrementCounterByAmount(5, -5000)">-5000</div>
+        <div class="side-button-neg" onclick="incrementCounterByAmount(6, -5000)">-5000</div>
+    </div>
+    <button onclick="clearCounters()">Clear All</button>
+
+    <script>
+        let counters = [0, 0, 0, 0, 0, 0];
+
+        function incrementCounter(index) {
+            counters[index - 1]+= 1000;
+            updateButton(index);
+        }
+
+        function incrementCounterByAmount(index, amount) {
+            counters[index - 1] +=  amount;
+            updateButton(index);
+        }
+
+        function updateButton(index) {
+            const button = document.querySelectorAll('.circle-button')[index - 1];
+            button.textContent = counters[index - 1];
+        }
+
+        function clearCounters() {
+            counters = [0, 0, 0, 0, 0, 0];
+            const buttons = document.querySelectorAll('.circle-button');
+            buttons.forEach((button, index) => {
+                button.textContent = counters[index];
+            });
+        }
+    </script>
+</body>
+</html>
